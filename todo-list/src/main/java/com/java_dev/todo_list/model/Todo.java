@@ -30,6 +30,13 @@ public class Todo {
 
     private boolean isCompleted;
 
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id", nullable = true)  // This creates the foreign key
+    private Student student;
+
+
+
     @Column(insertable = true)
     private LocalDateTime createdAt;
 

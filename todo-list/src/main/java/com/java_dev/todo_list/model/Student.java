@@ -2,6 +2,7 @@ package com.java_dev.todo_list.model;
 
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,12 +22,12 @@ public class Student {
 
     private String lastName;
 
+    @Column(unique = true)
     private String emailId;
 
     private String password;
 
-    @OneToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY,targetEntity = Todo.class)
-    @JoinColumn(name = "todo_id" ,referencedColumnName = "todoId")
+    @OneToMany(mappedBy = "student", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Todo> TodoList;
 
 }
